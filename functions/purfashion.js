@@ -40,7 +40,6 @@ if(id){
       const {id} = product;
       const {category, name, price, images, size, material, dimension, innerMaterial, weight, stock, instock} = product.fields
       const url = images[0].url
-      console.log(products);
       return {category, name, price, size, material, dimension, innerMaterial, weight, stock, instock, url, id}
     })
     return {
