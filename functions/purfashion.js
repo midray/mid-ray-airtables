@@ -20,13 +20,12 @@ if(id){
     }
     const {id} = product;
     const {category, name, price, images, size, material, dimension, innerMaterial, weight, stock, instock} = product.fields
-    product = {id, category, name, price, images, size, material, dimension, innerMaterial, weight, stock, instock}
     return {
       headers:{
         'Access-Control-Allow-Origin': '*'
       },
       statusCode: 200,
-      body: JSON.stringify(product)
+      body: JSON.stringify({id, category, name, price, images, size, material, dimension, innerMaterial, weight, stock, instock})
     }
   }catch(error){
     return {
@@ -42,6 +41,7 @@ if(id){
       const {id} = product;
       const {category, name, price, images, size, material, dimension, innerMaterial, weight, stock, instock} = product.fields
       const url = images[0].url
+      console.log(products);
       return {category, name, price, size, material, dimension, innerMaterial, weight, stock, instock, url, id}
     })
     return {
