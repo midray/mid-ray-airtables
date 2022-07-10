@@ -18,14 +18,13 @@ if(id){
         body: `No Product with an ID: ${id}` 
       }
     }
-    const {id} = product;
-    const {category, name, price, images, size, material, dimension, innerMaterial, weight, stock, instock} = product.fields
+  
     return {
       headers:{
         'Access-Control-Allow-Origin': '*'
       },
       statusCode: 200,
-      body: JSON.stringify({id, category, name, price, images, size, material, dimension, innerMaterial, weight, stock, instock})
+      body: JSON.stringify(product);
     }
   }catch(error){
     return {
