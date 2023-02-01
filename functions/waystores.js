@@ -38,9 +38,9 @@ if(id){
     const {records} = await airtable.list();
     const products = records.map((product)=>{
       const {id} = product;
-      const {category, brand} = product.fields
-      // const url = images[0].url
-      return {category, brand, id}
+      const {category, brand, images, review, title, offer_price, price, banner, campaingn_product, cam_product_available, cam_product_sale, product_type} = product.fields
+      const url = images[0].url
+      return {category, brand, url, review, title, offer_price, price, banner, campaingn_product, cam_product_available, cam_product_sale, product_type, id}
     })
     return {
       headers:{
