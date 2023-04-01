@@ -6,6 +6,7 @@ const airtable = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
   .table('Products')
 
 
+
  exports.handler = async (event, context, cb) =>{
 
 const {id} = event.queryStringParameters
@@ -35,7 +36,16 @@ if(id){
   
 }else{
   try{
-    const {records} = await airtable.list();
+  //   airtable('Products').select({
+  //     view: 'Grid view'
+  // }).firstPage(function(err, records) {
+  //     if (err) { console.error(err); return; }
+  //     records.forEach(function(record) {
+  //         console.log('Retrieved', record.get('item_id'));
+  //     });
+  // });
+    const {records} = await airtable.list({ maxRecords: 100});
+   
     const products = records.map((product)=>{
       const {id} = product;
       const {category, brand, images, review, title, offer_price, price, banner, campaingn_product, cam_product_available, cam_product_sale, product_type} = product.fields
