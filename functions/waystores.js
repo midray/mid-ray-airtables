@@ -26,7 +26,7 @@ const airtable = Airtable.configure({
   // console.log(event)
 
 const {id} = event.queryStringParameters
-console.log(id)
+// console.log(id)
 if(id){
   try{
     // let product = await airtable.retrieve(id);
@@ -39,12 +39,12 @@ if(id){
 
    
       const record = await base('Products').find(id);
-      console.log(record.fields); // Logs the retrieved record's fields
+      // console.log(record.fields); // Logs the retrieved record's fields
       // return record.fields;
       return {
-        // headers:{
-        //   'Access-Control-Allow-Origin': '*'
-        // },
+        headers:{
+          'Access-Control-Allow-Origin': '*'
+        },
         statusCode: 200,
         body: JSON.stringify(record.fields)
       }
@@ -77,6 +77,9 @@ if(id){
               })
 
       return {
+        headers:{
+            'Access-Control-Allow-Origin': '*'
+        },
         statusCode: 200,
         body: JSON.stringify(newRecords)
       }
